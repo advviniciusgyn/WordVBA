@@ -1,0 +1,2130 @@
+Private Sub CB_ant2_Click()
+MultiPage1.Value = 0
+End Sub
+
+Private Sub CB_ant3_Click()
+MultiPage1.Value = 1
+End Sub
+
+Private Sub CB_ant4_Click()
+MultiPage1.Value = 2
+End Sub
+
+Private Sub CB_ant5_Click()
+If Cmboxmunicipio = "GOIANIA" Then
+MultiPage1.Value = 3
+Else
+MultiPage1.Value = 2
+End If
+End Sub
+
+Private Sub CB_ant6_Click()
+If CheckBox_mudacargo = True Then
+MultiPage1.Value = 4
+ElseIf Cmboxmunicipio = "GOIANIA" Then
+MultiPage1.Value = 3
+Else
+MultiPage1.Value = 2
+End If
+End Sub
+
+Private Sub CB_ant7_Click()
+If CheckBox_produtfiscal = True Then
+MultiPage1.Value = 5
+ElseIf CheckBox_mudacargo = True Then
+MultiPage1.Value = 4
+ElseIf Cmboxmunicipio = "GOIANIA" Then
+MultiPage1.Value = 3
+Else: MultiPage1.Value = 2
+End If
+End Sub
+
+
+
+Private Sub CB_busca_Click()
+Call populate_values
+End Sub
+
+Private Sub CB_descartar_Click()
+    Perguntasaida2 = MsgBox("Deseja mesmo DESCARTAR todos os campos preenchidos?", vbYesNo, "SAP")
+    If Perguntasaida2 = vbYes Then
+    Unload Formulariounico
+    Else
+    End If
+End Sub
+
+Private Sub CB_distribuicaodeproc_Click()
+MultiPage1.Value = 9
+End Sub
+
+Private Sub CB_prox1_Click()
+MultiPage1.Value = 1
+End Sub
+
+Private Sub CB_prox2_Click()
+MultiPage1.Value = 2
+End Sub
+
+Private Sub CB_prox3_Click()
+If Cmboxmunicipio = "GOIANIA" Then
+MultiPage1.Value = 3
+ElseIf CheckBox_mudacargo = True Then
+MultiPage1.Value = 4
+ElseIf CheckBox_produtfiscal = True Then
+MultiPage1.Value = 5
+Else: MultiPage1.Value = 6
+End If
+End Sub
+
+Private Sub CB_prox4_Click()
+If CheckBox_mudacargo = True Then
+MultiPage1.Value = 4
+ElseIf CheckBox_produtfiscal = True Then
+MultiPage1.Value = 5
+Else
+MultiPage1.Value = 6
+End If
+End Sub
+
+Private Sub CB_prox5_Click()
+If CheckBox_produtfiscal = True Then
+MultiPage1.Value = 5
+Else
+MultiPage1.Value = 6
+End If
+End Sub
+
+Private Sub CB_prox6_Click()
+MultiPage1.Value = 6
+End Sub
+
+Private Sub CB_retomar1_Click()
+MultiPage1.Value = 0
+End Sub
+
+Private Sub CB_retomar2_Click()
+MultiPage1.Value = 0
+End Sub
+
+Private Sub CB_sair_Click()
+    Perguntasaida1 = MsgBox("Deseja mesmo SAIR do preenchimento automatizado?", vbYesNo, "SAP")
+    If Perguntasaida1 = vbYes Then
+    Unload Formulariounico
+    Else
+    End If
+End Sub
+
+Private Sub CB_salvar_Click()
+'TELA 0
+'NÚMERO DO PROCESSO
+Proc_numero = Numprobox
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="PROCNUMERO1", replacewith:=Proc_numero, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'PERÍODO
+Periodo_ano = Periodobox
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="ANODOATO1", replacewith:=Periodo_ano, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'ÓRGÃO OU ENTIDADE
+Orgao_entidade = Orgaobox
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="ORGAO1", replacewith:=Orgao_entidade, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'NOME DO GESTOR
+Nome_Gestor = Nomegestorbox
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="NOMEGESTOR1", replacewith:=Nome_Gestor, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'CARGO DO GESTOR
+Cargo_Gestor = Cargogestbox
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="CARGOGESTOR1", replacewith:=Cargo_Gestor, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'CPF DO GESTOR
+CPF_Gestor = Cpfgestbox
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="CPFGESTOR1", replacewith:=CPF_Gestor, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'NOME DO PREFEITO
+Nome_Prefeito = Nomeprefbox
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="NOMEPREFEITO1", replacewith:=Nome_Prefeito, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'CPF DO PREFEITO
+CPF_Prefeito = Cpfprefbox
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="CPFPREFEITO1", replacewith:=CPF_Prefeito, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'NOME DO INTERESSADO
+Nome_interessado = Interessadobox
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="NOMEINTERESSADO1", replacewith:=Nome_interessado, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'CPF DO INTERESSADO
+CPF_Interessado = Cpfintebox
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="CPFINTERESSADO1", replacewith:=CPF_Interessado, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'NOMENCLATURA DO CARGO DO BENEFICIÁRIO
+Nomenclatura_cargo = Cargobenefbox
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="Nomenclaturacargo1", replacewith:=Nomenclatura_cargo, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'NUMERO DO PARECER JURÍDICO
+Num_parecer = Parecercbox
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="FOLHAPARECER1", replacewith:=Num_parecer, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'NOME DO ANALISTA
+Nome_analista = Cmboxservidor
+Naoassina1 = "Samira de Oliveira Rezende"
+Naoassina2 = "Rosa Maria Caiado Cunha e Cruz"
+Naoassina3 = "José Ronaldo de Sene"
+Naoassina4 = "Cristiane Monteiro Machado"
+    'Criando o critério de pesquisa
+If Nome_analista = Naoassina1 Then
+ActiveDocument.Bookmarks("Nome_analista").Range.Text = ""
+ActiveDocument.Bookmarks("Cargo_analista").Range.Text = ""
+ElseIf Nome_analista = Naoassina2 Then
+ActiveDocument.Bookmarks("Nome_analista").Range.Text = ""
+ActiveDocument.Bookmarks("Cargo_analista").Range.Text = ""
+ElseIf Nome_analista = Naoassina3 Then
+ActiveDocument.Bookmarks("Nome_analista").Range.Text = ""
+ActiveDocument.Bookmarks("Cargo_analista").Range.Text = ""
+ElseIf Nome_analista = Naoassina4 Then
+ActiveDocument.Bookmarks("Nome_analista").Range.Text = ""
+ActiveDocument.Bookmarks("Cargo_analista").Range.Text = ""
+Else
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="$NOMEANALISTA1", replacewith:=Nome_analista, Replace:=wdReplaceAll, MatchCase:=True
+End With
+End If
+
+'TELA 1
+'TIPO DE ATO CONCESSÓRIO
+Ato_concessorio = Tipoatobox
+'Primeiro botão
+    If OptionButton1_TA = True Then
+    With ActiveDocument.Content.Find
+        .Forward = True
+        .Wrap = wdFindStop
+        .Execute FindText:="Tipodeato1", replacewith:="Portaria", Replace:=wdReplaceAll, MatchCase:=True
+    End With
+    Else
+    End If
+'Segundo botão
+    If OptionButton2_TA = True Then
+    With ActiveDocument.Content.Find
+        .Forward = True
+        .Wrap = wdFindStop
+        .Execute FindText:="Tipodeato1", replacewith:="Decreto", Replace:=wdReplaceAll, MatchCase:=True
+    End With
+    Else
+    End If
+'Terceiro botão
+    If OptionButton3_TA = True Then
+    With ActiveDocument.Content.Find
+        .Forward = True
+        .Wrap = wdFindStop
+        .Execute FindText:="Tipodeato1", replacewith:=Ato_concessorio, Replace:=wdReplaceAll, MatchCase:=True
+    End With
+    Else
+    End If
+    
+'NÚMERO DO ATO CONCESSÓRIO
+Numero_ato = Numatoconcbox
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="numerodoato1", replacewith:=Numero_ato, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'DATA DO ATO CONCESSÓRIO
+Data_atoconcessorio = Dataatoconcbox
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="Datadoato1", replacewith:=Data_atoconcessorio, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'FOLHAS DO ATO CONCESSÓRIO
+Folha_atoconcessorio = Folhaatobox
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="folhasdoato1", replacewith:=Folha_atoconcessorio, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'NOME DE QUEM ASSINOU O DECRETO
+'Primeiro botão
+    If OptionButton1_AT = True Then
+    With ActiveDocument.Content.Find
+        .Forward = True
+        .Wrap = wdFindStop
+        .Execute FindText:="Nome_assina_ato_cargo1", replacewith:=Nome_Gestor, Replace:=wdReplaceAll, MatchCase:=True
+        .Execute FindText:="Cargo_assina_ato1", replacewith:=Cargo_Gestor, Replace:=wdReplaceAll, MatchCase:=True
+    End With
+    Else
+    End If
+
+'Segundo botão
+    'Primeiro botão
+    If OptionButton2_AT = True Then
+    With ActiveDocument.Content.Find
+        .Forward = True
+        .Wrap = wdFindStop
+        .Execute FindText:="Nome_assina_ato_cargo1", replacewith:=Nome_Prefeito, Replace:=wdReplaceAll, MatchCase:=True
+        .Execute FindText:="Cargo_assina_ato1", replacewith:="Prefeito", Replace:=wdReplaceAll, MatchCase:=True
+    End With
+    Else
+    End If
+
+'Terceiro botão
+    If OptionButton3_AT = True Then
+        'Nome
+        Nome_assinaato = Nomeassinatobox
+        'Criando o critério de pesquisa
+        With ActiveDocument.Content.Find
+            .Forward = True
+            .Wrap = wdFindStop
+            .Execute FindText:="Nome_assina_ato_cargo1", replacewith:=Nome_assinaato, Replace:=wdReplaceAll, MatchCase:=True
+        End With
+        'Cargo
+        Cargo_assinaato = Cargoassinaatobox
+        'Criando o critério de pesquisa
+        With ActiveDocument.Content.Find
+            .Forward = True
+            .Wrap = wdFindStop
+            .Execute FindText:="Cargo_assina_ato1", replacewith:=Cargo_assinaato, Replace:=wdReplaceAll, MatchCase:=True
+        End With
+    Else
+    End If
+
+'HOUVE RETIFICAÇÃO DO ATO CONCESSÓRIO?
+If CkBox_retificacao = True Then
+'Ato retificador
+    Ato_concessorio2 = Tipoatobox2
+'Primeiro botão
+    If OptionButton1_TA2 = True Then
+    With ActiveDocument.Content.Find
+        .Forward = True
+        .Wrap = wdFindStop
+        .Execute FindText:="Tipodeato2", replacewith:="Portaria", Replace:=wdReplaceAll, MatchCase:=True
+    End With
+    Else
+    End If
+'Segundo botão
+    If OptionButton2_TA2 = True Then
+    With ActiveDocument.Content.Find
+        .Forward = True
+        .Wrap = wdFindStop
+        .Execute FindText:="Tipodeato2", replacewith:="Decreto", Replace:=wdReplaceAll, MatchCase:=True
+    End With
+    Else
+    End If
+'Terceiro botão
+    If OptionButton3_TA2 = True Then
+    With ActiveDocument.Content.Find
+        .Forward = True
+        .Wrap = wdFindStop
+        .Execute FindText:="Tipodeato2", replacewith:=Ato_concessorio2, Replace:=wdReplaceAll, MatchCase:=True
+    End With
+    Else
+    End If
+'Número do ato retificador
+    Numero_ato2 = Numatoconcbox2
+        With ActiveDocument.Content.Find
+            .Forward = True
+            .Wrap = wdFindStop
+            .Execute FindText:="numerodoato2", replacewith:=Numero_ato2, Replace:=wdReplaceAll, MatchCase:=True
+        End With
+'Folhas do ato retificador
+        Folha_atoconcessorio2 = Folhaatobox2
+        With ActiveDocument.Content.Find
+            .Forward = True
+            .Wrap = wdFindStop
+            .Execute FindText:="folhasdoato2", replacewith:=Folha_atoconcessorio2, Replace:=wdReplaceAll, MatchCase:=True
+        End With
+Else
+With ActiveDocument.Content.Find
+   .Forward = True
+   .Wrap = wdFindStop
+   .Execute FindText:=" retificado pelo Tipodeato2 n. numerodoato2 (f. folhasdoato2),", replacewith:="", Replace:=wdReplaceAll, MatchCase:=True
+End With
+End If
+
+'TEM EFEITO RETROATIVO?
+    If CkBox_retroatividade = True Then
+        'Data do ato
+        Data_retroativo = TxtBox_retroatividade
+        With ActiveDocument.Content.Find
+            .Forward = True
+            .Wrap = wdFindStop
+            .Execute FindText:="dataretroativo", replacewith:=Data_retroativo, Replace:=wdReplaceAll, MatchCase:=True
+        End With
+    Else
+        With ActiveDocument.Content.Find
+            .Forward = True
+            .Wrap = wdFindStop
+            .Execute FindText:=" com efeitos retroativos a partir de dataretroativo, ", replacewith:="", Replace:=wdReplaceAll, MatchCase:=True
+        End With
+    End If
+
+'INSERÇÃO DE DADOS NO EXCEL
+Pergunta4 = MsgBox("Deseja GRAVAR informações no controle de processos?", vbYesNo, "SAP")
+    If Pergunta4 = vbYes Then
+        'To update in database excel file | enable "microsoft excel xx object library" in Tools -> references
+        Dim appXL As Object, xlFile As Object, oWsht As Object
+        Set appXL = CreateObject("Excel.Application")
+        Set xlFile = appXL.Workbooks.Open("F:\Auditorias\2019\PES\Banco de dados de aposentadoria 2019 - 2º Semestre.xlsx") 'update the database file path
+        Set oWsht = xlFile.Sheets("Planilha1") 'change the sheet name if you change it in database file
+        
+        Dim lastrow As Long
+        'lastrow = oWsht.Range("A" & Rows.Count).End(xlUp).Row + 1 'Finds the last blank row
+        lastrow = 2
+        Do While oWsht.Range("A" & lastrow) <> ""
+            lastrow = lastrow + 1
+        Loop
+        'Store Values in Database
+        Application.DisplayAlerts = False
+        oWsht.Range("A" & lastrow).Value = Proc_numero
+        oWsht.Range("B" & lastrow).Value = Periodo_ano
+        oWsht.Range("C" & lastrow).Value = Orgao_entidade
+        oWsht.Range("D" & lastrow).Value = Nome_Gestor
+        oWsht.Range("E" & lastrow).Value = Cargo_Gestor
+        oWsht.Range("F" & lastrow).Value = CPF_Gestor
+        oWsht.Range("G" & lastrow).Value = Nome_Prefeito
+        oWsht.Range("H" & lastrow).Value = CPF_Prefeito
+        oWsht.Range("I" & lastrow).Value = Cmboxservidor
+        oWsht.Range("J" & lastrow).Value = Interessadobox
+        oWsht.Range("K" & lastrow).Value = Cpfintebox
+        oWsht.Range("L" & lastrow).Value = Cargobenefbox
+        oWsht.Range("M" & lastrow).Value = OptionButton1_AT
+        oWsht.Range("N" & lastrow).Value = OptionButton2_AT
+        oWsht.Range("O" & lastrow).Value = OptionButton3_AT
+        oWsht.Range("P" & lastrow).Value = Nomeassinatobox
+        oWsht.Range("Q" & lastrow).Value = Cargoassinaatobox
+        oWsht.Range("R" & lastrow).Value = OptionButton1_TA
+        oWsht.Range("S" & lastrow).Value = OptionButton2_TA
+        oWsht.Range("T" & lastrow).Value = OptionButton3_TA
+        oWsht.Range("U" & lastrow).Value = Tipoatobox
+        oWsht.Range("V" & lastrow).Value = Numatoconcbox
+        oWsht.Range("W" & lastrow).Value = Dataatoconcbox
+        oWsht.Range("X" & lastrow).Value = Folhaatobox
+        oWsht.Range("Y" & lastrow).Value = Parecercbox
+        oWsht.Range("Z" & lastrow).Value = ComboBox_estagiodaanalise
+        oWsht.Range("AA" & lastrow).Value = CkBox_retificacao
+        oWsht.Range("AB" & lastrow).Value = OptionButton1_TA2
+        oWsht.Range("AC" & lastrow).Value = OptionButton2_TA2
+        oWsht.Range("AD" & lastrow).Value = OptionButton3_TA2
+        oWsht.Range("AE" & lastrow).Value = Tipoatobox2
+        oWsht.Range("AF" & lastrow).Value = Numatoconcbox2
+        oWsht.Range("AG" & lastrow).Value = Folhaatobox2
+        oWsht.Range("AH" & lastrow).Value = CkBox_retroatividade
+        oWsht.Range("AI" & lastrow).Value = TxtBox_retroatividade
+        oWsht.Range("AJ" & lastrow).Value = Dataprotocolo
+        oWsht.Range("AK" & lastrow).Value = Datapublicado
+        oWsht.Range("AL" & lastrow).Value = FolhapublicBox
+        oWsht.Range("AM" & lastrow).Value = CheckBox_2_1_1
+        oWsht.Range("AN" & lastrow).Value = CheckBox_2_1_1_1
+        oWsht.Range("AO" & lastrow).Value = CheckBox_2_1_2
+        oWsht.Range("AP" & lastrow).Value = CheckBox_2_1_2_1
+        oWsht.Range("AQ" & lastrow).Value = CheckBox_2_1_2_2
+        oWsht.Range("AR" & lastrow).Value = CheckBox_2_1_3
+        oWsht.Range("AS" & lastrow).Value = CheckBox_2_1_3_1
+        oWsht.Range("AT" & lastrow).Value = CheckBox_2_1_3_2
+        oWsht.Range("AU" & lastrow).Value = TxtBox_notifdefesa
+        oWsht.Range("AV" & lastrow).Value = TxtBox_flsdefesaintemp
+        oWsht.Range("AW" & lastrow).Value = TxtBox_defesaintemp
+        oWsht.Range("AX" & lastrow).Value = CBox_regrasap
+        oWsht.Range("AY" & lastrow).Value = CB_sexo
+        oWsht.Range("AZ" & lastrow).Value = TxtBox_ingressocargo
+        oWsht.Range("BA" & lastrow).Value = Txt_doc_ingressocargo
+        oWsht.Range("BB" & lastrow).Value = Txt_fls_ingressocargo
+        oWsht.Range("BC" & lastrow).Value = TxtBox_idade
+        oWsht.Range("BD" & lastrow).Value = Txt_doc_idade
+        oWsht.Range("BE" & lastrow).Value = Txt_fls_idade
+        oWsht.Range("BF" & lastrow).Value = TxtBox_tempcontribuicao
+        oWsht.Range("BG" & lastrow).Value = Txt_doc_tempcontribuicao
+        oWsht.Range("BH" & lastrow).Value = Txt_fls_tempcontribuicao
+        oWsht.Range("BI" & lastrow).Value = TxtBox_servpubl
+        oWsht.Range("BJ" & lastrow).Value = Txt_doc_servpubl
+        oWsht.Range("BK" & lastrow).Value = Txt_fls_servpubl
+        oWsht.Range("BL" & lastrow).Value = TxtBox_carreira
+        oWsht.Range("BM" & lastrow).Value = Txt_doc_carreira
+        oWsht.Range("BN" & lastrow).Value = Txt_fls_carreira
+        oWsht.Range("BO" & lastrow).Value = TxtBox_tempmagisterio
+        oWsht.Range("BP" & lastrow).Value = Txt_doc_tempmagisterio
+        oWsht.Range("BQ" & lastrow).Value = Txt_fls_tempmagisterio
+        oWsht.Range("BR" & lastrow).Value = TxtBox_tempocargo
+        oWsht.Range("BS" & lastrow).Value = Txt_doc_tempocargo
+        oWsht.Range("BT" & lastrow).Value = Txt_fls_tempocargo
+        oWsht.Range("BU" & lastrow).Value = TxtBox_tempcontexed
+        oWsht.Range("BV" & lastrow).Value = Txt_doc_tempcontexed
+        oWsht.Range("BW" & lastrow).Value = Txt_fls_tempcontexed
+        oWsht.Range("BX" & lastrow).Value = CkBox_cumpriurequisitos
+        oWsht.Range("BY" & lastrow).Value = CBox_requisitodescump
+        oWsht.Range("BZ" & lastrow).Value = TxtBox_justificativadescump
+        xlFile.Save
+        xlFile.Close
+        appXL.Quit
+        Set appXL = Nothing
+        Application.DisplayAlerts = True
+        '--Officetricks Code Changes End Here
+       With ActiveDocument.Content.Find
+            .Forward = True
+            .Wrap = wdFindStop
+            .Execute FindText:="nao_gravado", replacewith:="gravado em " & Now, Replace:=wdReplaceAll, MatchCase:=True
+        End With
+    
+    MsgBox "Informações processuais gravadas com sucesso.", vbInformation, "SAP informa:"
+    Else
+    End If
+
+    
+'TELA 1
+'TEMPESTIVIDADE - DATA DO PROTOCOLO
+Data_protocolo = Dataprotocolo
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="DATAPROTOCOL1", replacewith:=Data_protocolo, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'TEMPESTIVIDADE - DATA A PUBLICAÇÃO
+Data_Publicado = Datapublicado
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="DATAPUBLIC1", replacewith:=Data_Publicado, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'FOLHAS DA PUBLICAÇÃO
+Folha_Public = FolhapublicBox
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="FLSPUBLIC1", replacewith:=Folha_Public, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'Checkboxes de fundamantação
+If CheckBox_2_1_1 = True Then
+    Else
+        ActiveDocument.Bookmarks("Temp_1").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_2_1_1.Enabled = False
+        CheckBox_2_1_1_1.Enabled = False
+    End If
+
+If CheckBox_2_1_1_1 = True Then
+    Else
+        ActiveDocument.Bookmarks("Temp_1_1").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_2_1_1_1.Enabled = False
+    End If
+
+If CheckBox_2_1_2 = True Then
+    Else
+        ActiveDocument.Bookmarks("Temp_2").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_2_1_2.Enabled = False
+        CheckBox_2_1_2_1.Enabled = False
+        CheckBox_2_1_2_2.Enabled = False
+    End If
+
+If CheckBox_2_1_2_1 = True Then
+    Else
+        ActiveDocument.Bookmarks("Temp_2_1").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_2_1_2_1.Enabled = False
+    End If
+
+If CheckBox_2_1_2_2 = True Then
+    Else
+        ActiveDocument.Bookmarks("Temp_2_2").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_2_1_2_2.Enabled = False
+    End If
+
+If CheckBox_2_1_3 = True Then
+    Else
+        ActiveDocument.Bookmarks("Temp_3").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_2_1_3.Enabled = False
+        CheckBox_2_1_3_1.Enabled = False
+        CheckBox_2_1_3_2.Enabled = False
+    End If
+
+If CheckBox_2_1_3_1 = True Then
+    Else
+        ActiveDocument.Bookmarks("Temp_3_1").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_2_1_3_1.Enabled = False
+    End If
+
+If CheckBox_2_1_3_2 = True Then
+    Else
+        ActiveDocument.Bookmarks("Temp_3_2").Range.Text = ""
+        'Desativa o checkbox
+       CheckBox_2_1_3_2.Enabled = False
+    End If
+
+'FOLHA DEFESA INTEMPESTIVIDADE
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="FL$DEFES@", replacewith:=TxtBox_flsdefesaintemp, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'TEOR DA DEFESA INTEMPESTIVIDADE / AUSÊNCIA DE ATO
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="RE$UM@DEFE$@", replacewith:=TxtBox_defesaintemp, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'FOLHA NOTIFICAÇÃO INTEMPESTIVIDADE / AUSÊNCIA DE ATO
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="FL$N@TIF", replacewith:=TxtBox_notifdefesa, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'TELA 2
+'Checkboxes da regra de aposentadoria
+'Botão 1
+If CBox_regrasap = "Idade e tempo de contrib. (art. 40, § 1º, III e ‘a’ da CF)" Then
+        ActiveDocument.Bookmarks("Textoap2").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap3").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap4").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap5").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap6").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap7").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap8").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap9").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap10").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap11").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap12").Range.Text = ""
+Else
+End If
+
+'Botão 2
+If CBox_regrasap = "Idade e tem. de contrib. professor (art. 40, §5º da CF)" Then
+        ActiveDocument.Bookmarks("Textoap1").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap3").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap4").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap5").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap6").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap7").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap8").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap9").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap10").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap11").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap12").Range.Text = ""
+Else
+End If
+
+'Botão 3
+If CBox_regrasap = "Idade (art. 40, § 1º, III e ‘b’ da CF)" Then
+        ActiveDocument.Bookmarks("Textoap1").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap2").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap4").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap5").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap6").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap7").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap8").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap9").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap10").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap11").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap12").Range.Text = ""
+Else
+End If
+
+'Botão 4
+If CBox_regrasap = "Invalidez integrais pela média (40, § 1º, I da CF)" Then
+        ActiveDocument.Bookmarks("Textoap1").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap2").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap3").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap5").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap6").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap7").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap8").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap9").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap10").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap11").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap12").Range.Text = ""
+Else
+End If
+
+'Botão 5
+If CBox_regrasap = "Invalidez proporcionais pela média (40, § 1º, I da CF)" Then
+        ActiveDocument.Bookmarks("Textoap1").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap2").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap3").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap4").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap6").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap7").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap8").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap9").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap10").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap11").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap12").Range.Text = ""
+Else
+End If
+
+'Botão 6
+If CBox_regrasap = "Regra de transição art. 6º da EC 41/03" Then
+        ActiveDocument.Bookmarks("Textoap1").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap2").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap3").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap4").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap5").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap7").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap8").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap9").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap10").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap11").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap12").Range.Text = ""
+Else
+End If
+
+'Botão 7
+If CBox_regrasap = "Regra de transição art. 6º da EC 41/03 para professor" Then
+        ActiveDocument.Bookmarks("Textoap1").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap2").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap3").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap4").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap5").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap6").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap8").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap9").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap10").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap11").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap12").Range.Text = ""
+Else
+End If
+
+'Botão 8
+If CBox_regrasap = "Regra de transição art. 3º da EC 47/05" Then
+        ActiveDocument.Bookmarks("Textoap1").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap2").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap3").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap4").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap5").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap6").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap7").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap9").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap10").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap11").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap12").Range.Text = ""
+Else
+End If
+
+'Botão 9
+If CBox_regrasap = "Invalidez com integralidade (EC 70/12)" Then
+        ActiveDocument.Bookmarks("Textoap1").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap2").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap3").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap4").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap5").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap6").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap7").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap8").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap10").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap11").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap12").Range.Text = ""
+Else
+End If
+
+'Botão 10
+If CBox_regrasap = "Invalidez com proventos proporcionais (EC 70/12)" Then
+        ActiveDocument.Bookmarks("Textoap1").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap2").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap3").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap4").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap5").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap6").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap7").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap8").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap9").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap11").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap12").Range.Text = ""
+Else
+End If
+
+'Botão 11
+If CBox_regrasap = "Aposentadoria compulsória (art. 40, II da CF)" Then
+        ActiveDocument.Bookmarks("Textoap1").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap2").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap3").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap4").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap5").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap6").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap7").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap8").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap9").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap10").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap12").Range.Text = ""
+Else
+End If
+
+'Botão 12
+If CBox_regrasap = "Aposentadoria Especial (Art. 40, §1º, III da CF)" Then
+        ActiveDocument.Bookmarks("Textoap2").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap3").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap4").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap5").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap6").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap7").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap8").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap9").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap10").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap11").Range.Text = ""
+        ActiveDocument.Bookmarks("Textoap1").Range.Text = ""
+Else
+End If
+
+
+'TELA 3
+'PROCESSOS DE GOIÂNIA
+If CheckBox_2_3_1 = True Then
+    Else
+        ActiveDocument.Bookmarks("Textogoiania1").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_2_3_1.Enabled = False
+    End If
+If CheckBox_2_3_2 = True Then
+    Else
+        ActiveDocument.Bookmarks("Textogoiania2").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_2_3_2.Enabled = False
+    End If
+If CheckBox_2_3_3 = True Then
+    Else
+        ActiveDocument.Bookmarks("Textogoiania3").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_2_3_3.Enabled = False
+    End If
+If CheckBox_2_3_4 = True Then
+    Else
+        ActiveDocument.Bookmarks("Textogoiania4").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_2_3_4.Enabled = False
+    End If
+If CheckBox_2_3_5 = True Then
+    Else
+        ActiveDocument.Bookmarks("Textogoiania5").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_2_3_5.Enabled = False
+    End If
+'É PROCESSO DE GOIÂNIA? (em testes)
+    If Cmboxmunicipio = "GOIANIA" Then
+    Else
+        ActiveDocument.Bookmarks("Textogoiania").Range.Text = ""
+    End If
+
+
+'TELA 4
+'MUDANÇA DE CARGOS
+'Checkboxes de fundamantação
+If CheckBox_1_1 = True Then
+    Else
+        ActiveDocument.Bookmarks("Mudacargo_1_1").Range.Text = ""
+        'Desativa o checkbox
+       CheckBox_1_1.Enabled = False
+End If
+
+If CheckBox_1_2 = True Then
+    Else
+        ActiveDocument.Bookmarks("Mudacargo_1_2").Range.Text = ""
+        'Desativa o checkbox
+       CheckBox_1_2.Enabled = False
+End If
+
+If CheckBox_2 = True Then
+    Else
+        ActiveDocument.Bookmarks("Mudacargo_2").Range.Text = ""
+        'Desativa o checkbox
+       CheckBox_2.Enabled = False
+End If
+
+If CheckBox_3 = True Then
+    Else
+        ActiveDocument.Bookmarks("Mudacargo_3").Range.Text = ""
+        'Desativa o checkbox
+       CheckBox_3.Enabled = False
+End If
+
+If CheckBox_4 = True Then
+    Else
+        ActiveDocument.Bookmarks("Mudacargo_4").Range.Text = ""
+        'Desativa o checkbox
+       CheckBox_4.Enabled = False
+End If
+
+If CheckBox_4_1 = True Then
+    Else
+        ActiveDocument.Bookmarks("Mudacargo_4_1").Range.Text = ""
+        'Desativa o checkbox
+       CheckBox_4_1.Enabled = False
+End If
+
+If CheckBox_4_2 = True Then
+    Else
+        ActiveDocument.Bookmarks("Mudacargo_4_2").Range.Text = ""
+        'Desativa o checkbox
+       CheckBox_4_2.Enabled = False
+End If
+
+If CheckBox_4_3 = True Then
+    Else
+        ActiveDocument.Bookmarks("Mudacargo_4_3").Range.Text = ""
+        'Desativa o checkbox
+       CheckBox_4_3.Enabled = False
+End If
+
+If CheckBox_5 = True Then
+    Else
+        ActiveDocument.Bookmarks("Mudacargo_5").Range.Text = ""
+        'Desativa o checkbox
+       CheckBox_5.Enabled = False
+End If
+
+If CheckBox_6 = True Then
+    Else
+        ActiveDocument.Bookmarks("Mudacargo_6").Range.Text = ""
+        'Desativa o checkbox
+       CheckBox_6.Enabled = False
+End If
+
+If CheckBox_7 = True Then
+    Else
+        ActiveDocument.Bookmarks("Mudacargo_7").Range.Text = ""
+        'Desativa o checkbox
+       CheckBox_7.Enabled = False
+End If
+
+
+
+'TELA 5
+'TEMPESTIVIDADE - DATA DO PROTOCOLO
+'Checkboxes de fundamantação
+If CheckBox_explic = True Then
+    Else
+        ActiveDocument.Bookmarks("ProdFisc_explic").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_explic.Enabled = False
+End If
+
+If CheckBox_2_5_1 = True Then
+    Else
+        ActiveDocument.Bookmarks("ProdFisc_1").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_2_5_1.Enabled = False
+End If
+
+If CheckBox_2_5_2 = True Then
+    Else
+        ActiveDocument.Bookmarks("ProdFisc_2").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_2_5_2.Enabled = False
+End If
+
+If CheckBox_2_5_3 = True Then
+    Else
+        ActiveDocument.Bookmarks("ProdFisc_3").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_2_5_3.Enabled = False
+    End If
+
+If CheckBox_2_5_4 = True Then
+    Else
+        ActiveDocument.Bookmarks("ProdFisc_4").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_2_5_4.Enabled = False
+    End If
+    
+
+'TELA 6
+'DISPOSITIVO
+'Checkboxes de fundamantação
+If CheckBox_1_ = True Then
+    Else
+        ActiveDocument.Bookmarks("EC_1_parte1").Range.Text = " "
+        ActiveDocument.Bookmarks("EC_1_parte2").Range.Text = " "
+        'Desativa o checkbox
+       CheckBox_1_.Enabled = False
+End If
+
+If CheckBox_1_1_ = True Then
+    Else
+        ActiveDocument.Bookmarks("EC_1_1").Range.Text = " "
+        'Desativa o checkbox
+       CheckBox_1_1_.Enabled = False
+End If
+
+If CheckBox_1_2_ = True Then
+    Else
+        ActiveDocument.Bookmarks("EC_1_2").Range.Text = " "
+        'Desativa o checkbox
+       CheckBox_1_2_.Enabled = False
+End If
+
+If CheckBox_1_3_ = True Then
+    Else
+        ActiveDocument.Bookmarks("EC_1_3").Range.Text = " "
+        'Desativa o checkbox
+       CheckBox_1_3_.Enabled = False
+End If
+
+If CheckBox_3_ = True Then
+    Else
+        ActiveDocument.Bookmarks("EC_3").Range.Text = " "
+        'Desativa o checkbox
+       CheckBox_3_.Enabled = False
+End If
+
+If CheckBox_3_1_ = True Then
+    Else
+        ActiveDocument.Bookmarks("EC_3_1").Range.Text = " "
+        'Desativa o checkbox
+       CheckBox_3_1_.Enabled = False
+End If
+
+If CheckBox_4_ = True Then
+    Else
+        ActiveDocument.Bookmarks("EC_4").Range.Text = " "
+        'Desativa o checkbox
+       CheckBox_4_.Enabled = False
+End If
+
+If CheckBox_4_1_ = True Then
+    Else
+        ActiveDocument.Bookmarks("EC_4_1").Range.Text = " "
+        'Desativa o checkbox
+       CheckBox_4_1_.Enabled = False
+End If
+
+If CheckBox_4_2_ = True Then
+    Else
+        ActiveDocument.Bookmarks("EC_4_2").Range.Text = " "
+        'Desativa o checkbox
+       CheckBox_4_2_.Enabled = False
+End If
+
+If CheckBox_5_ = True Then
+    Else
+        ActiveDocument.Bookmarks("EC_5").Range.Text = " "
+        'Desativa o checkbox
+       CheckBox_5_.Enabled = False
+End If
+
+If CCheckBox_RV = True Then
+    Else
+        ActiveDocument.Bookmarks("EC_RV").Range.Text = " "
+        'Desativa o checkbox
+        CheckBox_RV.Enabled = False
+End If
+
+If CheckBox_5_1_ = True Then
+    Else
+        ActiveDocument.Bookmarks("EC_5_1").Range.Text = " "
+        'Desativa o checkbox
+       CheckBox_5_1_.Enabled = False
+End If
+
+'Botão 1
+If OptionButton1_EC = True Then
+        OptionButton2_EC.Value = False
+        OptionButton3_EC.Value = False
+        ActiveDocument.Bookmarks("EC_B2").Range.Text = " "
+        ActiveDocument.Bookmarks("EC_B3").Range.Text = " "
+Else
+End If
+
+If OptionButton2_EC = True Then
+        OptionButton1_EC.Value = False
+        OptionButton3_EC.Value = False
+        ActiveDocument.Bookmarks("EC_B1").Range.Text = " "
+        ActiveDocument.Bookmarks("EC_B3").Range.Text = " "
+Else
+End If
+
+If OptionButton3_EC = True Then
+        OptionButton1_EC.Value = False
+        OptionButton2_EC.Value = False
+        ActiveDocument.Bookmarks("EC_B1").Range.Text = " "
+        ActiveDocument.Bookmarks("EC_B2").Range.Text = " "
+Else
+End If
+
+'NUMERO DO DESPACHO OU CERTIFICADO
+Num_documento = Numdocbox
+    'Criando o critério de pesquisa
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="NUMDOC1", replacewith:=Num_documento, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+'Escolher entre Despacho e Certificado
+If Opcaocertificado = True Then
+        'ActiveDocument.Bookmarks("Texto_despacho").Range.Text = ""
+        ActiveDocument.Bookmarks("apagar_despacho").Range.Text = ""
+        '    With ActiveDocument.Content.Find
+        '    .Forward = True
+        '    .Wrap = wdFindStop
+        '    .Execute FindText:="$DESPA$CERTF$", replacewith:="CERTIFICADO", Replace:=wdReplaceAll, MatchCase:=True
+        '    End With
+    Else
+End If
+
+If Opcaodespacho = True Then
+        'ActiveDocument.Bookmarks("Texto_certificado").Range.Text = ""
+        ActiveDocument.Bookmarks("apagar_certificado").Range.Text = ""
+      
+        '     With ActiveDocument.Content.Find
+        '    .Forward = True
+        '    .Wrap = wdFindStop
+        '    .Execute FindText:="$DESPA$CERTF$", replacewith:="DESPACHO", Replace:=wdReplaceAll, MatchCase:=True
+        '    End With
+    Else
+End If
+
+
+'Checkboxes de fundamantação
+If CheckBox_mudacargo = True Then
+    Else
+        ActiveDocument.Bookmarks("Mudanca_cargo").Range.Text = ""
+        'Desativa o checkbox
+        CheckBox_mudacargo.Enabled = False
+    End If
+
+If CheckBox_produtfiscal = True Then
+    Else
+        ActiveDocument.Bookmarks("Textoprodutfiscal").Range.Text = ""
+        CheckBox_produtfiscal.Enabled = False
+    End If
+
+If CheckBox_quinqadquirido = True Then
+    Else
+        ActiveDocument.Bookmarks("Quinq_adquirido").Range.Text = ""
+        CheckBox_quinqadquirido.Enabled = False
+    End If
+
+If CheckBox_vprtsc = True Then
+    Else
+        ActiveDocument.Bookmarks("Vprtsl").Range.Text = ""
+        CheckBox_vprtsc.Enabled = False
+    End If
+
+If CheckBox_vprtur = True Then
+    Else
+        ActiveDocument.Bookmarks("Vprtur").Range.Text = ""
+        CheckBox_vprtur.Enabled = False
+    End If
+    
+    
+If CheckBox_analiseproventos = True Then
+    Else
+        ActiveDocument.Bookmarks("Texto_analiseproventos").Range.Text = ""
+        CheckBox_analiseproventos.Enabled = False
+    End If
+
+'Insersão de dados da análise
+Estagio_analise = ComboBox_estagiodaanalise
+With ActiveDocument.Content.Find
+    .Forward = True
+    .Wrap = wdFindStop
+    .Execute FindText:="nao_gravado", replacewith:=Estagio_analise & ", gravado em " & Now, Replace:=wdReplaceAll, MatchCase:=True
+End With
+
+MsgBox "Informações processuais gravadas com sucesso.", vbInformation, "SAP informa:"
+
+Unload Formulariounico
+
+End Sub
+
+Private Sub CBox_regrasap_Change()
+'Primeiro limpa as opções
+CBox_requisitodescump.Clear
+
+'Mostrar a regra em outros lugares
+TxtBox_mostraregra1.Text = CBox_regrasap
+
+'Primeira regra Idade e tempo de contrib. (art. 40, § 1º, III e ‘a’ da CF)"
+If CBox_regrasap = "Idade e tempo de contrib. (art. 40, § 1º, III e ‘a’ da CF)" Then
+'Invisível
+Frame_tempcarreira.Visible = False
+Frame_tempmagis.Visible = False
+Frame_tempcontribexcecido.Visible = False
+Frame_requisitosinvalidez.Visible = False
+Frame_descumprequisitosinvalidez.Visible = False
+'Visível
+Frame_dataingresso.Visible = True
+Frame_tempcontrib.Visible = True
+Frame_idade.Visible = True
+Frame_temposervpub.Visible = True
+Frame_tempcargo.Visible = True
+Frame_requisitos.Visible = True
+Frame_cumprequisitos.Visible = True
+'Carregar hipóteses de descumprimento
+With CBox_requisitodescump
+        .AddItem ("Data de ingresso no serviço público em cargo efetivo")
+        .AddItem ("Tempo de contribuição insuficiente")
+        .AddItem ("Licença averbada em dobro depois de 98")
+        .AddItem ("Desaverbação de parte do tempo de contribuição não utilizado prestado no município")
+        .AddItem ("Reconhecimento de tempo do INSS sem CTC prestado no próprio município, sem averbação automática prévia")
+        .AddItem ("Tempo de serviço público insuficiente")
+        .AddItem ("Idade insuficiente")
+        .AddItem ("Tempo de carreira insuficiente")
+        .AddItem ("Tempo de cargo público insuficiente")
+        .AddItem ("Tempo de magistério insuficiente")
+        .AddItem ("Tempo de contribuição excedido do art. 3º da EC 47/05 insuficiente")
+        .AddItem ("Ausência de documentos para comprovar requisitos")
+        .AddItem ("Outro - reescrever aqui o requisito descumprido")
+End With
+
+
+'Regra "Idade e tem. de contrib. professor (art. 40, §5º da CF)"
+ElseIf CBox_regrasap = "Idade e tem. de contrib. professor (art. 40, §5º da CF)" Then
+'Invisível
+Frame_tempcarreira.Visible = False
+Frame_tempcontribexcecido.Visible = False
+Frame_requisitosinvalidez.Visible = False
+Frame_descumprequisitosinvalidez.Visible = False
+'Visível
+Frame_dataingresso.Visible = True
+Frame_tempcontrib.Visible = True
+Frame_idade.Visible = True
+Frame_temposervpub.Visible = True
+Frame_tempcargo.Visible = True
+Frame_tempmagis.Visible = True
+Frame_requisitos.Visible = True
+Frame_requisitos2.Visible = True
+Frame_cumprequisitos.Visible = True
+'Carregar hipóteses de descumprimento
+With CBox_requisitodescump
+        .AddItem ("Data de ingresso no serviço público em cargo efetivo")
+        .AddItem ("Tempo de contribuição insuficiente")
+        .AddItem ("Licença averbada em dobro depois de 98")
+        .AddItem ("Desaverbação de parte do tempo de contribuição não utilizado prestado no município")
+        .AddItem ("Reconhecimento de tempo do INSS sem CTC prestado no próprio município, sem averbação automática prévia")
+        .AddItem ("Tempo de serviço público insuficiente")
+        .AddItem ("Idade insuficiente")
+        .AddItem ("Tempo de carreira insuficiente")
+        .AddItem ("Tempo de cargo público insuficiente")
+        .AddItem ("Tempo de magistério insuficiente")
+        .AddItem ("Tempo de contribuição excedido do art. 3º da EC 47/05 insuficiente")
+        .AddItem ("Ausência de documentos para comprovar requisitos")
+        .AddItem ("Outro - reescrever aqui o requisito descumprido")
+End With
+
+'Regra "Idade (art. 40, § 1º, III e ‘b’ da CF)"
+ElseIf CBox_regrasap = "Idade (art. 40, § 1º, III e ‘b’ da CF)" Then
+'Invisível
+Frame_tempcontrib.Visible = False
+Frame_tempcarreira.Visible = False
+Frame_tempmagis.Visible = False
+Frame_tempcontribexcecido.Visible = False
+Frame_requisitosinvalidez.Visible = False
+Frame_descumprequisitosinvalidez.Visible = False
+'Visível
+Frame_dataingresso.Visible = True
+Frame_idade.Visible = True
+Frame_temposervpub.Visible = True
+Frame_tempcargo.Visible = True
+Frame_requisitos.Visible = True
+Frame_requisitos2.Visible = True
+Frame_cumprequisitos.Visible = True
+'Carregar hipóteses de descumprimento
+With CBox_requisitodescump
+        .AddItem ("Data de ingresso no serviço público em cargo efetivo")
+        .AddItem ("Tempo de contribuição insuficiente")
+        .AddItem ("Licença averbada em dobro depois de 98")
+        .AddItem ("Desaverbação de parte do tempo de contribuição não utilizado prestado no município")
+        .AddItem ("Reconhecimento de tempo do INSS sem CTC prestado no próprio município, sem averbação automática prévia")
+        .AddItem ("Tempo de serviço público insuficiente")
+        .AddItem ("Idade insuficiente")
+        .AddItem ("Tempo de carreira insuficiente")
+        .AddItem ("Tempo de cargo público insuficiente")
+        .AddItem ("Tempo de magistério insuficiente")
+        .AddItem ("Tempo de contribuição excedido do art. 3º da EC 47/05 insuficiente")
+        .AddItem ("Ausência de documentos para comprovar requisitos")
+        .AddItem ("Outro - reescrever aqui o requisito descumprido")
+End With
+
+
+'Regra "Invalidez integrais pela média (40, § 1º, I da CF)"
+ElseIf CBox_regrasap = "Invalidez integrais pela média (40, § 1º, I da CF)" Then
+'Invisível
+Frame_requisitos.Visible = False
+Frame_requisitos2.Visible = False
+Frame_cumprequisitos.Visible = False
+'Visível
+Frame_requisitosinvalidez.Visible = True
+Frame_descumprequisitosinvalidez.Visible = True
+'Carregar hipóteses de descumprimento
+With CBox_requisitodescump
+        .AddItem ("Data de ingresso no serviço público")
+        .AddItem ("Ausência de laudo médico")
+        .AddItem ("Doença não está no rol de doenças que permitem a integralidade")
+        .AddItem ("Não consta o CID")
+        .AddItem ("CID apontado não corresponde à doença descrita")
+        .AddItem ("Ausência de reavaliação periódica no ato concessório")
+        .AddItem ("Ausência de termo de curatela em caso de doença mental")
+        .AddItem ("Não tirou prévia licença")
+        .AddItem ("Ausência de documentos para comprovar requisitos")
+        .AddItem ("Outro - reescrever aqui o requisito descumprido")
+End With
+
+'Regra "Invalidez proporcionais pela média (40, § 1º, I da CF)"
+ElseIf CBox_regrasap = "Invalidez proporcionais pela média (40, § 1º, I da CF)" Then
+'Invisível
+Frame_requisitos.Visible = False
+Frame_requisitos2.Visible = False
+Frame_cumprequisitos.Visible = False
+'Visível
+Frame_requisitosinvalidez.Visible = True
+Frame_descumprequisitosinvalidez.Visible = True
+'Carregar hipóteses de descumprimento
+With CBox_requisitodescump
+        .AddItem ("Data de ingresso no serviço público")
+        .AddItem ("Ausência de laudo médico")
+        .AddItem ("Doença não está no rol de doenças que permitem a integralidade")
+        .AddItem ("Não consta o CID")
+        .AddItem ("CID apontado não corresponde à doença descrita")
+        .AddItem ("Ausência de reavaliação periódica no ato concessório")
+        .AddItem ("Ausência de termo de curatela em caso de doença mental")
+        .AddItem ("Não tirou prévia licença")
+        .AddItem ("Ausência de documentos para comprovar requisitos")
+        .AddItem ("Outro - reescrever aqui o requisito descumprido")
+End With
+
+'Regra de transição art. 6º da EC 41/03
+ElseIf CBox_regrasap = "Regra de transição art. 6º da EC 41/03" Then
+'Invisível
+Frame_tempmagis.Visible = False
+Frame_tempcontribexcecido.Visible = False
+Frame_requisitosinvalidez.Visible = False
+Frame_descumprequisitosinvalidez.Visible = False
+'Visível
+Frame_dataingresso.Visible = True
+Frame_tempcontrib.Visible = True
+Frame_tempcarreira.Visible = True
+Frame_idade.Visible = True
+Frame_temposervpub.Visible = True
+Frame_tempcargo.Visible = True
+Frame_requisitos.Visible = True
+Frame_requisitos2.Visible = True
+Frame_cumprequisitos.Visible = True
+'Carregar hipóteses de descumprimento
+With CBox_requisitodescump
+        .AddItem ("Data de ingresso no serviço público em cargo efetivo")
+        .AddItem ("Tempo de contribuição insuficiente")
+        .AddItem ("Licença averbada em dobro depois de 98")
+        .AddItem ("Desaverbação de parte do tempo de contribuição não utilizado prestado no município")
+        .AddItem ("Reconhecimento de tempo do INSS sem CTC prestado no próprio município, sem averbação automática prévia")
+        .AddItem ("Tempo de serviço público insuficiente")
+        .AddItem ("Idade insuficiente")
+        .AddItem ("Tempo de carreira insuficiente")
+        .AddItem ("Tempo de cargo público insuficiente")
+        .AddItem ("Tempo de magistério insuficiente")
+        .AddItem ("Tempo de contribuição excedido do art. 3º da EC 47/05 insuficiente")
+        .AddItem ("Ausência de documentos para comprovar requisitos")
+        .AddItem ("Outro - reescrever aqui o requisito descumprido")
+End With
+
+'Regra de transição art. 6º da EC 41/03 para professor
+ElseIf CBox_regrasap = "Regra de transição art. 6º da EC 41/03 para professor" Then
+'Invisível
+Frame_tempcontribexcecido.Visible = False
+Frame_requisitosinvalidez.Visible = False
+Frame_descumprequisitosinvalidez.Visible = False
+'Visível
+Frame_dataingresso.Visible = True
+Frame_tempcontrib.Visible = True
+Frame_tempcarreira.Visible = True
+Frame_idade.Visible = True
+Frame_temposervpub.Visible = True
+Frame_tempcargo.Visible = True
+Frame_requisitos.Visible = True
+Frame_requisitos2.Visible = True
+Frame_cumprequisitos.Visible = True
+'Carregar hipóteses de descumprimento
+With CBox_requisitodescump
+        .AddItem ("Data de ingresso no serviço público em cargo efetivo")
+        .AddItem ("Tempo de contribuição insuficiente")
+        .AddItem ("Licença averbada em dobro depois de 98")
+        .AddItem ("Desaverbação de parte do tempo de contribuição não utilizado prestado no município")
+        .AddItem ("Reconhecimento de tempo do INSS sem CTC prestado no próprio município, sem averbação automática prévia")
+        .AddItem ("Tempo de serviço público insuficiente")
+        .AddItem ("Idade insuficiente")
+        .AddItem ("Tempo de carreira insuficiente")
+        .AddItem ("Tempo de cargo público insuficiente")
+        .AddItem ("Tempo de magistério insuficiente")
+        .AddItem ("Tempo de contribuição excedido do art. 3º da EC 47/05 insuficiente")
+        .AddItem ("Ausência de documentos para comprovar requisitos")
+        .AddItem ("Outro - reescrever aqui o requisito descumprido")
+End With
+
+'Regra de transição art. 3º da EC 47/05
+ElseIf CBox_regrasap = "Regra de transição art. 3º da EC 47/05" Then
+'Invisível
+Frame_tempmagis.Visible = False
+Frame_requisitosinvalidez.Visible = False
+Frame_descumprequisitosinvalidez.Visible = False
+'Visível
+Frame_dataingresso.Visible = True
+Frame_tempcontrib.Visible = True
+Frame_tempcarreira.Visible = True
+Frame_idade.Visible = True
+Frame_temposervpub.Visible = True
+Frame_tempcargo.Visible = True
+Frame_tempcontribexcecido.Visible = True
+Frame_requisitos.Visible = True
+Frame_requisitos2.Visible = True
+Frame_cumprequisitos.Visible = True
+'Carregar hipóteses de descumprimento
+With CBox_requisitodescump
+        .AddItem ("Data de ingresso no serviço público em cargo efetivo")
+        .AddItem ("Tempo de contribuição insuficiente")
+        .AddItem ("Licença averbada em dobro depois de 98")
+        .AddItem ("Desaverbação de parte do tempo de contribuição não utilizado prestado no município")
+        .AddItem ("Reconhecimento de tempo do INSS sem CTC prestado no próprio município, sem averbação automática prévia")
+        .AddItem ("Tempo de serviço público insuficiente")
+        .AddItem ("Idade insuficiente")
+        .AddItem ("Tempo de carreira insuficiente")
+        .AddItem ("Tempo de cargo público insuficiente")
+        .AddItem ("Tempo de magistério insuficiente")
+        .AddItem ("Tempo de contribuição excedido do art. 3º da EC 47/05 insuficiente")
+        .AddItem ("Ausência de documentos para comprovar requisitos")
+        .AddItem ("Outro - reescrever aqui o requisito descumprido")
+End With
+
+'Regra Invalidez com integralidade (EC 70/12)
+ElseIf CBox_regrasap = "Invalidez com integralidade (EC 70/12)" Then
+'Invisível
+Frame_requisitos.Visible = False
+Frame_requisitos2.Visible = False
+Frame_cumprequisitos.Visible = False
+'Visível
+Frame_requisitosinvalidez.Visible = True
+Frame_descumprequisitosinvalidez.Visible = True
+'Carregar hipóteses de descumprimento
+With CBox_requisitodescump
+        .AddItem ("Data de ingresso no serviço público")
+        .AddItem ("Ausência de laudo médico")
+        .AddItem ("Doença não está no rol de doenças que permitem a integralidade")
+        .AddItem ("Não consta o CID")
+        .AddItem ("CID apontado não corresponde à doença descrita")
+        .AddItem ("Ausência de reavaliação periódica no ato concessório")
+        .AddItem ("Ausência de termo de curatela em caso de doença mental")
+        .AddItem ("Não tirou prévia licença")
+        .AddItem ("Ausência de documentos para comprovar requisitos")
+        .AddItem ("Outro - reescrever aqui o requisito descumprido")
+End With
+
+'Regra Invalidez com proventos proporcionais (EC 70/12)
+ElseIf CBox_regrasap = "Invalidez com proventos proporcionais (EC 70/12)" Then
+'Invisível
+Frame_requisitos.Visible = False
+Frame_requisitos2.Visible = False
+Frame_cumprequisitos.Visible = False
+'Visível
+Frame_requisitosinvalidez.Visible = True
+Frame_descumprequisitosinvalidez.Visible = True
+'Carregar hipóteses de descumprimento
+With CBox_requisitodescump
+        .AddItem ("Data de ingresso no serviço público")
+        .AddItem ("Ausência de laudo médico")
+        .AddItem ("Doença não está no rol de doenças que permitem a integralidade")
+        .AddItem ("Não consta o CID")
+        .AddItem ("CID apontado não corresponde à doença descrita")
+        .AddItem ("Ausência de reavaliação periódica no ato concessório")
+        .AddItem ("Ausência de termo de curatela em caso de doença mental")
+        .AddItem ("Não tirou prévia licença")
+        .AddItem ("Ausência de documentos para comprovar requisitos")
+        .AddItem ("Outro - reescrever aqui o requisito descumprido")
+End With
+
+'Regra Aposentadoria compulsória (art. 40, II da CF)
+ElseIf CBox_regrasap = "Aposentadoria compulsória (art. 40, II da CF)" Then
+'Invisível
+Frame_dataingresso.Visible = False
+Frame_tempcontrib.Visible = False
+Frame_temposervpub.Visible = False
+Frame_tempcargo.Visible = False
+Frame_tempcarreira.Visible = False
+Frame_tempmagis.Visible = False
+Frame_tempcontribexcecido.Visible = False
+Frame_requisitosinvalidez.Visible = False
+Frame_requisitos2.Visible = False
+Frame_descumprequisitosinvalidez.Visible = False
+'Visível
+Frame_idade.Visible = True
+Frame_requisitos.Visible = True
+Frame_cumprequisitos.Visible = True
+'Carregar hipóteses de descumprimento
+With CBox_requisitodescump
+        .AddItem ("Data de ingresso no serviço público em cargo efetivo")
+        .AddItem ("Tempo de contribuição insuficiente")
+        .AddItem ("Licença averbada em dobro depois de 98")
+        .AddItem ("Desaverbação de parte do tempo de contribuição não utilizado prestado no município")
+        .AddItem ("Reconhecimento de tempo do INSS sem CTC prestado no próprio município, sem averbação automática prévia")
+        .AddItem ("Tempo de serviço público insuficiente")
+        .AddItem ("Idade insuficiente")
+        .AddItem ("Tempo de carreira insuficiente")
+        .AddItem ("Tempo de cargo público insuficiente")
+        .AddItem ("Tempo de magistério insuficiente")
+        .AddItem ("Tempo de contribuição excedido do art. 3º da EC 47/05 insuficiente")
+        .AddItem ("Ausência de documentos para comprovar requisitos")
+        .AddItem ("Outro - reescrever aqui o requisito descumprido")
+End With
+
+'Regra Aposentadoria Especial (Art. 40, §1º, III da CF)
+ElseIf CBox_regrasap = "Aposentadoria Especial (Art. 40, §1º, III da CF)" Then
+Frame_requisitos.Visible = False
+Frame_requisitos2.Visible = True
+Frame_cumprequisitos.Visible = False
+Frame_requisitosinvalidez.Visible = False
+Frame_descumprequisitosinvalidez.Visible = False
+'Carregar hipóteses de descumprimento
+With CBox_requisitodescump
+.AddItem ("ausência de certidão específica que evidencie o tempo de exposição  a agentes nocivos")
+.AddItem ("ausência de Perfil Profissiográfico Previdenciário – PPP")
+.AddItem ("PPP em desacordo com o manual (detalhar posteriomente)")
+.AddItem ("ausência de Laudo Técnico de Condições Ambientais do Trabalho – LTCAT")
+.AddItem ("LTCAT em desacordo com o manual")
+.AddItem ("ausência de parecer da perícia médica, em relação ao enquadramento por exposição a agentes nocivos")
+.AddItem ("parecer da perícia médica em desacordo com o manual")
+.AddItem ("ausência de Formulário Análise e Decisão Técnica de Atividade Especial")
+.AddItem ("“Relatório Conclusivo” não consta o parecer médico pericial de forma clara, objetiva e legível")
+.AddItem ("ausência de laudo com medição de ruídos")
+.AddItem ("laudo com medição de ruídos em desacordo com o manual")
+.AddItem ("Outro - reescrever aqui o requisito descumprido")
+End With
+Else
+CBox_requisitodescump.Clear
+End If
+
+End Sub
+
+
+
+
+
+Private Sub CheckBox_1__Click()
+If CheckBox_1_ = True Then
+CheckBox_1_1_.Enabled = True
+CheckBox_1_2_.Enabled = True
+CheckBox_1_3_.Enabled = True
+    Else
+CheckBox_1_1_.Enabled = False
+CheckBox_1_2_.Enabled = False
+CheckBox_1_3_.Enabled = False
+    End If
+End Sub
+
+Private Sub CheckBox_2_1_2_1_Click()
+If CheckBox_2_1_2_1 = True Then
+Frame_defesa.Visible = True
+Frame38.Visible = True
+Frame39.Visible = False
+Label_defesa.Visible = True
+TxtBox_defesaintemp.Visible = True
+CheckBox_2_1_2_2 = False
+    Else
+Frame_defesa.Visible = False
+CheckBox_2_1_2_2 = True
+    End If
+End Sub
+
+Private Sub CheckBox_2_1_2_2_Click()
+If CheckBox_2_1_2_2 = True Then
+Frame_defesa.Visible = True
+Frame39.Visible = True
+Frame38.Visible = False
+Label_defesa.Visible = False
+TxtBox_defesaintemp.Visible = False
+CheckBox_2_1_2_1 = False
+    Else
+Frame_defesa.Visible = False
+CheckBox_2_1_2_1 = True
+    End If
+End Sub
+
+Private Sub CheckBox_2_1_3_1_Click()
+If CheckBox_2_1_3_1 = True Then
+Frame_defesa.Visible = True
+Frame38.Visible = True
+Frame39.Visible = False
+Label_defesa.Visible = True
+TxtBox_defesaintemp.Visible = True
+    Else
+Frame_defesa.Visible = False
+    End If
+End Sub
+
+Private Sub CheckBox_2_1_3_2_Click()
+If CheckBox_2_1_3_2 = True Then
+Frame_defesa.Visible = True
+Frame39.Visible = True
+Frame38.Visible = False
+Label_defesa.Visible = False
+TxtBox_defesaintemp.Visible = False
+    Else
+Frame_defesa.Visible = False
+    End If
+End Sub
+
+Private Sub CheckBox_3__Click()
+If CheckBox_3_ = True Then
+CheckBox_3_1_.Enabled = True
+    Else
+CheckBox_3_1_.Enabled = False
+    End If
+End Sub
+
+Private Sub CheckBox_4__Click()
+If CheckBox_4_ = True Then
+CheckBox_4_1_.Enabled = True
+CheckBox_4_2_.Enabled = True
+    Else
+CheckBox_4_1_.Enabled = False
+CheckBox_4_2_.Enabled = False
+    End If
+End Sub
+
+Private Sub CheckBox_5__Click()
+If CheckBox_5_ = True Then
+CheckBox_5_1_.Enabled = True
+    Else
+CheckBox_5_1_.Enabled = False
+    End If
+End Sub
+
+Private Sub CkBox_cumpriurequisitos_Click()
+If CkBox_cumpriurequisitos = True Then
+Frame40.Visible = False
+Else
+Frame40.Visible = True
+End If
+End Sub
+
+Private Sub CkBox_cumpriurequisitosinvalid_Click()
+If CkBox_cumpriurequisitosinvalid = True Then
+Frame40.Visible = False
+Else
+Frame40.Visible = True
+End If
+End Sub
+
+Private Sub CkBox_naocumpriurequisitos_Click()
+If CkBox_naocumpriurequisitos = True Then
+Frame40.Visible = True
+Else
+Frame40.Visible = False
+End If
+End Sub
+
+Private Sub CkBox_naocumpriurequisitosinvalid_Click()
+If CkBox_naocumpriurequisitosinvalid = True Then
+Frame40.Visible = True
+Else
+Frame40.Visible = False
+End If
+End Sub
+
+Private Sub CkBox_retificacao_Click()
+If CkBox_retificacao = True Then
+Frame33.Visible = True
+Else
+Frame33.Visible = False
+End If
+End Sub
+
+Private Sub CkBox_retroatividade_Click()
+If CkBox_retroatividade = True Then
+TxtBox_retroatividade.Enabled = True
+TxtBox_retroatividade.BackColor = vbWhite
+Label150.ForeColor = vbBlack
+Else
+TxtBox_retroatividade.Enabled = False
+TxtBox_retroatividade.BackColor = RGB(204, 204, 204)
+Label150.ForeColor = RGB(204, 204, 204)
+End If
+End Sub
+
+Private Sub CommandButton2_Click()
+MultiPage1.Value = 8
+End Sub
+
+Private Sub Dataprotocolo_Change()
+Datapublicado.Enabled = True
+Datapublicado.BackColor = vbWhite
+End Sub
+
+Private Sub Datapublicado_AfterUpdate()
+Dim Dataprotocolo As Date
+Dim Datapublicado As Date
+Dim resultdata As Integer
+resultdata = DateDiff("d", Datapublicado, Dataprotocolo)
+TxtBox_qtdias.Value = resultdata
+End Sub
+
+
+
+Private Sub MultiPage1_Change()
+
+End Sub
+
+Private Sub Opcaocertificado_Click()
+    If Opcaocertificado.Value = True Then
+       Opcaodespacho.Value = False
+    Else
+    End If
+End Sub
+
+Private Sub Opcaodespacho_Click()
+    If Opcaodespacho.Value = True Then
+       Opcaocertificado.Value = False
+    Else
+    End If
+End Sub
+
+Private Sub CheckBox_2_1_1_Click()
+If CheckBox_2_1_1 = True Then
+CheckBox_2_1_1_1.Enabled = True
+    Else
+CheckBox_2_1_1_1.Enabled = False
+    End If
+End Sub
+
+Private Sub CheckBox_2_1_2_Click()
+If CheckBox_2_1_2 = True Then
+CheckBox_2_1_2_1.Enabled = True
+CheckBox_2_1_2_2.Enabled = True
+    Else
+CheckBox_2_1_2_1.Value = False
+CheckBox_2_1_2_2.Value = False
+CheckBox_2_1_2_1.Enabled = False
+CheckBox_2_1_2_2.Enabled = False
+    End If
+End Sub
+
+Private Sub CheckBox_2_1_3_Click()
+If CheckBox_2_1_3 = True Then
+CheckBox_2_1_3_1.Enabled = True
+CheckBox_2_1_3_2.Enabled = True
+    Else
+CheckBox_2_1_3_1.Value = False
+CheckBox_2_1_3_1.Enabled = False
+CheckBox_2_1_3_2.Value = False
+CheckBox_2_1_3_2.Enabled = False
+    End If
+End Sub
+
+
+
+Private Sub UserForm_Initialize()
+'Define em qual aba vai inicializar
+MultiPage1.Value = 0
+
+'Inserindo opções no combobox
+'Anos do processo
+With Periodobox
+        .AddItem ("2015")
+        .AddItem ("2016")
+        .AddItem ("2017")
+        .AddItem ("2018")
+        .AddItem ("2019")
+        .AddItem ("2020")
+        .AddItem ("2021")
+        .AddItem ("2022")
+        .AddItem ("2023")
+        .AddItem ("2024")
+        .AddItem ("2025")
+End With
+
+'Nome do servidor
+With Cmboxservidor
+        .AddItem ("Samira de Oliveira Rezende")
+        .AddItem ("Cristiane Monteiro Machado")
+        .AddItem ("Claudia Alessandra da Silva")
+        .AddItem ("Rosa Maria Caiado Cunha e Cruz")
+        .AddItem ("Ilma Aparecida Silva")
+        .AddItem ("Davi de Castro Batista")
+        .AddItem ("Luís Paulo Carmo de Melo")
+        .AddItem ("José Ronaldo de Sene")
+        .AddItem ("Douglas Santos")
+        .AddItem ("Lilian Oliveira Veras Ribeiro")
+        .AddItem ("Juliana da Silva Vinhal Andrade")
+        .AddItem ("Gleys Regina Alves de Paiva Lopes")
+        .AddItem ("Kátia Cristina Jardim de Sousa")
+        .AddItem ("Flávia Lemes da Silva")
+End With
+
+'Estágio da análise
+With ComboBox_estagiodaanalise
+        .AddItem ("Primeira análise")
+        .AddItem ("Segunda análise")
+        .AddItem ("Terceira análise")
+        .AddItem ("Quarta análise")
+        .AddItem ("Mais de cinco análises")
+End With
+
+'Tipos de aposentadoria
+With CBox_regrasap
+        .AddItem ("Idade e tempo de contrib. (art. 40, § 1º, III e ‘a’ da CF)")
+        .AddItem ("Idade e tem. de contrib. professor (art. 40, §5º da CF)")
+        .AddItem ("Idade (art. 40, § 1º, III e ‘b’ da CF)")
+        .AddItem ("Invalidez integrais pela média (40, § 1º, I da CF)")
+        .AddItem ("Invalidez proporcionais pela média (40, § 1º, I da CF)")
+        .AddItem ("Regra de transição art. 6º da EC 41/03")
+        .AddItem ("Regra de transição art. 6º da EC 41/03 para professor")
+        .AddItem ("Regra de transição art. 3º da EC 47/05")
+        .AddItem ("Invalidez com integralidade (EC 70/12)")
+        .AddItem ("Invalidez com proventos proporcionais (EC 70/12)")
+        .AddItem ("Aposentadoria compulsória (art. 40, II da CF)")
+        .AddItem ("Aposentadoria Especial (Art. 40, §1º, III da CF)")
+End With
+
+'Gênero do aposentado
+With CB_sexo
+        .AddItem ("Homem")
+        .AddItem ("Mulher")
+End With
+
+'Integralidade
+With CBox_doecaintegral
+        .AddItem ("Sim")
+        .AddItem ("Não")
+End With
+
+'Integralidade
+With CBox_previalicenca
+        .AddItem ("Sim")
+        .AddItem ("Não")
+End With
+
+'Inserindo opções no combobox
+Application.ScreenUpdating = False
+Application.DisplayAlerts = False
+Set appXL = CreateObject("Excel.Application")
+Set xlFile = appXL.Workbooks.Open("F:\Auditorias\2019\PES\Banco de Gestores.xlsx")
+Cmboxmunicipio.List = xlFile.Worksheets(1).Range("A2:A175").Value
+ xlFile.Close
+appXL.Quit
+Set appXL = Nothing
+Application.ScreenUpdating = True
+Application.DisplayAlerts = True
+
+
+'Inserindo imagem com a meta do mês
+Meta.Picture = LoadPicture("F:\Auditorias\2019\PES\35\Admininstrativo 2019\Produtividade 2019\Meta do mês.bmp")
+
+'Inserindo imagem com distribuição de processos
+Distribuicao.Picture = LoadPicture("F:\Auditorias\2019\PES\35\Admininstrativo 2019\Outros\Distribuição de processos.bmp")
+
+End Sub
+
+
+Private Sub Cargoassinaatobox_Change()
+If Cargoassinaatobox.Value = "" Then
+Cargoassinaatobox.BackColor = vbRed
+Cargoassinaatobox.SetFocus
+Else
+Cargoassinaatobox.BackColor = vbWhite
+End If
+
+End Sub
+
+Private Sub Cargobenefbox_Change()
+If Cargobenefbox.Value = "" Then
+Cargobenefbox.BackColor = vbRed
+Cargobenefbox.SetFocus
+Else
+Cargobenefbox.BackColor = vbWhite
+End If
+End Sub
+
+Private Sub Cargogestbox_Change()
+If Cargogestbox.Value = "" Then
+Cargogestbox.BackColor = vbRed
+Cargogestbox.SetFocus
+Else
+Cargogestbox.BackColor = vbWhite
+End If
+
+End Sub
+
+Private Sub Cpfgestbox_Change()
+Cpfgestbox = Format(Cpfgestbox, "000"".""000"".""000""-""00")
+If Cpfgestbox.Value = "" Then
+Cpfgestbox.BackColor = vbRed
+Cpfgestbox.SetFocus
+Else
+Cpfgestbox.BackColor = vbWhite
+End If
+End Sub
+
+Private Sub Cpfintebox_Change()
+If Cpfintebox.Value = "" Then
+Cpfintebox.BackColor = vbRed
+Cpfintebox.SetFocus
+Else
+Cpfintebox.BackColor = vbWhite
+End If
+End Sub
+
+Private Sub Cpfprefbox_Change()
+Cpfprefbox = Format(Cpfprefbox, "000"".""000"".""000""-""00")
+If Cpfprefbox.Value = "" Then
+Cpfprefbox.BackColor = vbRed
+Cpfprefbox.SetFocus
+Else
+Cpfprefbox.BackColor = vbWhite
+End If
+End Sub
+
+Private Sub Dataatoconcbox_Change()
+If Dataatoconcbox.Value = "" Then
+Dataatoconcbox.BackColor = vbRed
+Dataatoconcbox.SetFocus
+Else
+Dataatoconcbox.BackColor = vbWhite
+End If
+End Sub
+
+Private Sub Folhaatobox_Change()
+If Folhaatobox.Value = "" Then
+Folhaatobox.BackColor = vbRed
+Folhaatobox.SetFocus
+Else
+Folhaatobox.BackColor = vbWhite
+End If
+End Sub
+
+Private Sub Interessadobox_Change()
+If Interessadobox.Value = "" Then
+Interessadobox.BackColor = vbRed
+Interessadobox.SetFocus
+Else
+Interessadobox.BackColor = vbWhite
+End If
+End Sub
+
+Private Sub Nomeassinatobox_Change()
+If Nomeassinatobox.Value = "" Then
+Nomeassinatobox.BackColor = vbRed
+Nomeassinatobox.SetFocus
+Else
+Nomeassinatobox.BackColor = vbWhite
+End If
+End Sub
+
+Private Sub Nomegestorbox_Change()
+If Nomegestorbox.Value = "" Then
+Nomegestorbox.BackColor = vbRed
+Nomegestorbox.SetFocus
+Else
+Nomegestorbox.BackColor = vbWhite
+End If
+End Sub
+
+Private Sub Nomeprefbox_Change()
+If Nomeprefbox.Value = "" Then
+Nomeprefbox.BackColor = vbRed
+Nomeprefbox.SetFocus
+Else
+Nomeprefbox.BackColor = vbWhite
+End If
+End Sub
+
+Private Sub Numatoconcbox_Change()
+If Numatoconcbox.Value = "" Then
+Numatoconcbox.BackColor = vbRed
+Numatoconcbox.SetFocus
+Else
+Numatoconcbox.BackColor = vbWhite
+End If
+End Sub
+
+Private Sub Numprobox_Change()
+If Numprobox.Value = "" Then
+Numprobox.BackColor = vbRed
+Numprobox.SetFocus
+Else
+Numprobox.BackColor = vbWhite
+End If
+End Sub
+
+Private Sub OptionButton1_AT_Click()
+If OptionButton1_AT = True Then
+Cargoassinaatobox.Enabled = False
+Nomeassinatobox.Enabled = False
+Cargoassinaatobox.BackColor = RGB(204, 204, 204)
+Nomeassinatobox.BackColor = RGB(204, 204, 204)
+Label18.ForeColor = RGB(204, 204, 204)
+Label19.ForeColor = RGB(204, 204, 204)
+Else
+End If
+End Sub
+
+Private Sub OptionButton2_AT_Click()
+If OptionButton2_AT = True Then
+Cargoassinaatobox.Enabled = False
+Nomeassinatobox.Enabled = False
+Cargoassinaatobox.BackColor = RGB(204, 204, 204)
+Nomeassinatobox.BackColor = RGB(204, 204, 204)
+Label18.ForeColor = RGB(204, 204, 204)
+Label19.ForeColor = RGB(204, 204, 204)
+Else
+End If
+End Sub
+
+Private Sub OptionButton3_AT_Click()
+If OptionButton3_AT = True Then
+Nomeassinatobox.Enabled = True
+Cargoassinaatobox.Enabled = True
+Cargoassinaatobox.BackColor = vbWhite
+Nomeassinatobox.BackColor = vbWhite
+Label18.ForeColor = vbBlack
+Label19.ForeColor = vbBlack
+Nomeassinatobox.SetFocus
+Else
+Cargoassinaatobox.Enabled = False
+Nomeassinatobox.Enabled = False
+Cargoassinaatobox.BackColor = RGB(204, 204, 204)
+Nomeassinatobox.BackColor = RGB(204, 204, 204)
+Label18.ForeColor = RGB(204, 204, 204)
+Label19.ForeColor = RGB(204, 204, 204)
+End If
+End Sub
+
+Private Sub OptionButton1_TA_Click()
+If OptionButton1_TA = True Then
+Tipoatobox.Enabled = False
+Tipoatobox.BackColor = RGB(204, 204, 204)
+Label20.ForeColor = RGB(204, 204, 204)
+Else
+End If
+End Sub
+
+Private Sub OptionButton2_TA_Click()
+If OptionButton2_TA = True Then
+Tipoatobox.Enabled = False
+Tipoatobox.BackColor = RGB(204, 204, 204)
+Label20.ForeColor = RGB(204, 204, 204)
+Else
+End If
+End Sub
+
+Private Sub OptionButton3_TA_Click()
+If OptionButton3_TA = True Then
+Tipoatobox.Enabled = True
+Tipoatobox.BackColor = vbWhite
+Label20.ForeColor = vbBlack
+Tipoatobox.SetFocus
+Else
+Tipoatobox.Enabled = False
+Tipoatobox.BackColor = RGB(204, 204, 204)
+Label20.ForeColor = RGB(204, 204, 204)
+End If
+End Sub
+
+
+
+Private Sub Orgaobox_Change()
+If Orgaobox.Value = "" Then
+Orgaobox.BackColor = vbRed
+Orgaobox.SetFocus
+Else
+Orgaobox.BackColor = vbWhite
+End If
+End Sub
+
+Private Sub Parecercbox_Change()
+If Parecercbox.Value = "" Then
+Parecercbox.BackColor = vbRed
+Parecercbox.SetFocus
+Else
+Parecercbox.BackColor = vbWhite
+End If
+End Sub
+
+Private Sub Periodobox_Change()
+If Periodobox.Value = "" Then
+Periodobox.BackColor = vbRed
+Periodobox.SetFocus
+Else
+Periodobox.BackColor = vbWhite
+End If
+End Sub
+
+Private Sub Tipoatobox_Change()
+If Tipoatobox.Value = "" Then
+Tipoatobox.BackColor = vbRed
+Tipoatobox.SetFocus
+Else
+Tipoatobox.BackColor = vbWhite
+End If
+End Sub
